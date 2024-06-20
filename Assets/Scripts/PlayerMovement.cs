@@ -13,6 +13,7 @@ public class PlayerMovement : MonoBehaviour
     public float velocity;
     public Vector2 input;
     public Vector3 movement;
+    public Transform mCamera;
     PlayerInput playerInput;
     CharacterController characterController;
     
@@ -22,26 +23,21 @@ public class PlayerMovement : MonoBehaviour
         playerInput.PlayerControls.Mov.performed += Move;
         playerInput.PlayerControls.Mov.canceled += Move;
         characterController = GetComponent<CharacterController>();
+        Cursor.visible = false;
+        mCamera = Camera.main.transform;
     }
 
     void Update()
     {
         Gravity();
         Movement();
-        //Rotation();
+        transform.eulerAngles = new Vector3(transform.eulerAngles.x, mCamera.eulerAngles.y, transform.eulerAngles.z);
     }
 
     private void Movement()
     {
         characterController.Move(movement * speed * Time.deltaTime);
     }
-    // private void Rotation()
-    // {
-    //     if(input.sqrMagnitude == 0) return;
-    //     var targetAngle = Mathf.Atan2(movement.x, movement.z) * Mathf.Rad2Deg;
-    //     var angle = Mathf.SmoothDampAngle(transform.eulerAngles.y, targetAngle, ref currentVelocity, smoothTime);
-    //     transform.rotation = Quaternion.Euler(0.0f, angle, 0.0f);
-    // }
 
     private void Gravity()
     {
@@ -60,6 +56,7 @@ public class PlayerMovement : MonoBehaviour
     {
         input = context.ReadValue<Vector2>();
         movement = new Vector3(input.x, 0f, input.y);
+        movement = transform.TransformDirection(movement);
     }
 
     void OnEnable()
