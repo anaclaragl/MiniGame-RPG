@@ -10,7 +10,7 @@ public class InventoryItem : MonoBehaviour, IBeginDragHandler, IDragHandler, IEn
 {
     [Header("UI")]
     public Image image;
-    public TMP_Text countText;
+    public Text countText;
 
     [HideInInspector] public Transform parentAfterDrag;
     [HideInInspector] public Item item;
@@ -20,7 +20,7 @@ public class InventoryItem : MonoBehaviour, IBeginDragHandler, IDragHandler, IEn
     public void InitializeItem(Item newItem){
         item = newItem;
         image.sprite = newItem.image;
-        UpdateCount();
+        //UpdateCount();
     }
 
     public void UpdateCount(){

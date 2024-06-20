@@ -9,11 +9,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ca86df1758e8db940b032b93e2ed5f73, type: 3}
-  m_Name: Buff Potion
+  m_Script: {fileID: 11500000, guid: 57f8d94a68484f145bf6db78e477979b, type: 3}
+  m_Name: Chave 2
   m_EditorClassIdentifier: 
-  itemName: Buff
+  itemName: Segunda chave
   description: 
-  type: 1
-  image: {fileID: 21300000, guid: ab6c00f8658367949ac51350e21f3b79, type: 3}
-  damageBuffAmount: 3
+  image: {fileID: 21300000, guid: 6c73d711de1eb5b479716c078b3a6d03, type: 3}

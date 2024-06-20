@@ -33,7 +33,7 @@ public class InventoryManager : MonoBehaviour
             if(itemInSlot != null && itemInSlot.item == item){
                 itemInSlot.count++;
                 itemInSlot.UpdateCount();
-                ShowCollected(item);
+                //ShowCollected(item);
                 return true;
             }
         }
@@ -44,7 +44,7 @@ public class InventoryManager : MonoBehaviour
             InventoryItem itemInSlot = slot.GetComponentInChildren<InventoryItem>();
             if(itemInSlot == null){
                 SpawnNewItem(item, slot);
-                ShowCollected(item);
+                //ShowCollected(item);
                 return true;
             }
         }
@@ -58,7 +58,7 @@ public class InventoryManager : MonoBehaviour
         inventoryItem.InitializeItem(item);
 
         // Ajusta a rotação dependendo do slot
-        AdjustItemRotation(inventoryItem, slot);
+        //AdjustItemRotation(inventoryItem, slot);
     }
 
     public void UseItemFromSlot(int slotIndex){
@@ -81,7 +81,7 @@ public class InventoryManager : MonoBehaviour
         }
     }
 
-    public void OpenInventory(){
+    /*public void OpenInventory(){
         if(mainInventoryPanel.activeSelf){
             mainInventoryPanel.SetActive(false);
         }else{
@@ -100,7 +100,7 @@ public class InventoryManager : MonoBehaviour
     IEnumerator DesactiveCollected(){
         yield return new WaitForSeconds(2);
         itemCollected.SetActive(false);
-    }
+    }*/
 
     /*//definir o botao pra usar cada item e chamar essa funcao nele
     public void UseItem(InventoryItem item){

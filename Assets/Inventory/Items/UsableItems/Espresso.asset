@@ -9,10 +9,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1b485eb263153684b85007230cbc7259, type: 3}
-  m_Name: Damage Bomb
+  m_Script: {fileID: 11500000, guid: ca86df1758e8db940b032b93e2ed5f73, type: 3}
+  m_Name: Espresso
   m_EditorClassIdentifier: 
-  itemName: Bomba
+  itemName: Espresso
   description: 
-  type: 0
-  image: {fileID: 21300000, guid: 70a77abda853dd941a0c8debf1de9b04, type: 3}
+  image: {fileID: 21300000, guid: 3b6ff29141372e94ca04f008fa1a512a, type: 3}
