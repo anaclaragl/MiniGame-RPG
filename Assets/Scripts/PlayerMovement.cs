@@ -7,7 +7,6 @@ public class PlayerMovement : MonoBehaviour
 {
     public float speed = 7f;
     public float currentVelocity;
-    //public float smoothTime = 0.05f;
     public float gravity = -9.81f;
     public float gravityMutiplier = 3.0f;
     public float velocity;
@@ -16,6 +15,11 @@ public class PlayerMovement : MonoBehaviour
     public Transform mCamera;
     PlayerInput playerInput;
     CharacterController characterController;
+
+    public bool canTalk = false;
+    public Dialogue dialogue;
+
+    public bool dialogueStart = false;
     
     void Awake()
     {
@@ -25,6 +29,7 @@ public class PlayerMovement : MonoBehaviour
         characterController = GetComponent<CharacterController>();
         Cursor.visible = false;
         mCamera = Camera.main.transform;
+        playerInput.PlayerControls.Dialogue.started += Dialogue;
     }
 
     void Update()
@@ -59,13 +64,40 @@ public class PlayerMovement : MonoBehaviour
         movement = transform.TransformDirection(movement);
     }
 
+    public void Dialogue(InputAction.CallbackContext context)
+    {
+        
+        if(context.started)
+        {
+            FindObjectOfType<DialogueManager>().DisplayNextSentence();  
+        }
+    }
+
     void OnEnable()
     {
         playerInput.PlayerControls.Enable();
+   
     }
 
     void OnDisable()
     {
         playerInput.PlayerControls.Disable();
+
+    }
+
+    public void OnTriggerEnter(Collider other)
+    {
+        if (other.CompareTag("Genio")){
+         FindObjectOfType<DialogueManager>().StartDialogue(dialogue);
+         canTalk = true;
+        }
+    }
+
+    public void OnTriggerExit(Collider other)
+    {
+        if (other.CompareTag("Genio")){
+         canTalk = false;
+         FindObjectOfType<DialogueManager>().EndDialogue();
+        }
     }
 }
