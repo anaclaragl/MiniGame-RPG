@@ -16,21 +16,24 @@ public class PlayerMovement : MonoBehaviour
     PlayerInput playerInput;
     CharacterController characterController;
 
-    public bool canTalk = false;
-    public Dialogue dialogue;
-    public DialogueManager dialogueManager;
+    // public bool canTalk = false;
+    // public bool canGate = false;
+    // public Dialogue dialogue;
+    // public DialogueManager dialogueManager;
 
-    public bool dialogueStart = false;
+    // public Gate gate;
+
+    // public bool dialogueStart = false;
     
     void Awake()
     {
         playerInput = new PlayerInput();
         playerInput.PlayerControls.Mov.performed += Move;
         playerInput.PlayerControls.Mov.canceled += Move;
+        //playerInput.PlayerControls.Dialogue.started += Dialogue;
         characterController = GetComponent<CharacterController>();
         Cursor.visible = false;
         mCamera = Camera.main.transform;
-        playerInput.PlayerControls.Dialogue.started += Dialogue;
     }
 
     void Update()
@@ -65,19 +68,27 @@ public class PlayerMovement : MonoBehaviour
         movement = transform.TransformDirection(movement);
     }
 
-    public void Dialogue(InputAction.CallbackContext context)
+    /*public void Dialogue(InputAction.CallbackContext context)
     {
-        if(context.started)
-        {
-            if(canTalk && dialogueManager.sentences.Count == 3){
-                Debug.Log("comecou");
-                dialogueManager.StartDialogue(dialogue);
-            }else{
-                Debug.Log("next");
-                dialogueManager.DisplayNextSentence();  
+        if(canTalk){
+            if(context.started){
+                if(dialogueManager.sentences.Count == 3){
+                    dialogueManager.StartDialogue(dialogue);
+                }else{
+                    dialogueManager.DisplayNextSentence();  
+                }
             }
         }
-    }
+        if(canGate){
+            if(context.started){
+                if (InventoryManager.instance.HasRequiredKeys(key1, key2)){
+                    gate.OpenDoor();
+                }else{
+                    gate.ShowLockedMessage();
+                }
+            }
+        }
+    }*/
 
     void OnEnable()
     {
@@ -91,10 +102,13 @@ public class PlayerMovement : MonoBehaviour
 
     }
 
-    public void OnTriggerEnter(Collider other)
+    /*public void OnTriggerEnter(Collider other)
     {
         if (other.CompareTag("Genio")){
             canTalk = true;
+        }
+        if (other.CompareTag("Portao")){
+            canGate = true;
         }
     }
 
@@ -105,5 +119,8 @@ public class PlayerMovement : MonoBehaviour
             dialogueManager.sentences.Clear();
             dialogueManager.EndDialogue();
         }
-    }
+        if (other.CompareTag("Portao")){
+            canGate = false;
+        }
+    }*/
 }

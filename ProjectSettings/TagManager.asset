@@ -5,6 +5,7 @@ TagManager:
   serializedVersion: 2
   tags:
   - Genio
+  - Portao
   layers:
   - Default
   - TransparentFX

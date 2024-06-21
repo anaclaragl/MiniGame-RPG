@@ -81,6 +81,21 @@ public class InventoryManager : MonoBehaviour
         }
     }
 
+    public bool HasItem(Item item){
+        for (int i = 0; i < inventorySlots.Length; i++){
+            InventorySlot slot = inventorySlots[i];
+            InventoryItem itemInSlot = slot.GetComponentInChildren<InventoryItem>();
+            if (itemInSlot != null && itemInSlot.item == item){
+                return true;
+            }
+        }
+        return false;
+    }
+
+    public bool HasRequiredKeys(Item key1, Item key2){
+        return HasItem(key1) && HasItem(key2);
+    }
+
     /*public void OpenInventory(){
         if(mainInventoryPanel.activeSelf){
             mainInventoryPanel.SetActive(false);
