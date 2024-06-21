@@ -11,10 +11,19 @@ public class DialogueManager : MonoBehaviour
     public Animator animator;
 
     public Queue<string> sentences;
+    public Dialogue _dialogue;
 
     void Start()
     {
         sentences = new Queue<string>();
+        FillSentences();
+    }
+
+    public void FillSentences(){
+        foreach (string sentence in _dialogue.sentences)
+        {
+            sentences.Enqueue(sentence);
+        }
     }
 
     public void StartDialogue (Dialogue dialogue)
@@ -24,12 +33,8 @@ public class DialogueManager : MonoBehaviour
 
         nameText.text = dialogue.name;
 
-        sentences.Clear();
+        //sentences.Clear();
 
-        foreach (string sentence in dialogue.sentences)
-        {
-            sentences.Enqueue(sentence);
-        }
 
         DisplayNextSentence();
     }
@@ -59,5 +64,6 @@ public class DialogueManager : MonoBehaviour
     public void EndDialogue(){
         Debug.Log("Fim do diálogo");
         animator.SetBool("IsOpen", false);
+        FillSentences();
     }
 }

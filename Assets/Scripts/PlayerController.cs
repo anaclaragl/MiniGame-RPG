@@ -27,6 +27,8 @@ public class PlayerController : MonoBehaviour
             }
         }
 
+        //checkKeys
+
         if (hit.collider.gameObject == musicPuzzle.repeatButton){
             musicPuzzle.RepeatSequence();
         }

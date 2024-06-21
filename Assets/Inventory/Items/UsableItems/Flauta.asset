@@ -13,5 +13,5 @@ MonoBehaviour:
   m_Name: Flauta
   m_EditorClassIdentifier: 
   itemName: Flauta
-  description: 
+  description: item pedido pelo mojo jojo
   image: {fileID: 21300000, guid: 229a6e2ef05b0f542ba7f9a86b40a975, type: 3}

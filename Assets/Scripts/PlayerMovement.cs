@@ -18,6 +18,7 @@ public class PlayerMovement : MonoBehaviour
 
     public bool canTalk = false;
     public Dialogue dialogue;
+    public DialogueManager dialogueManager;
 
     public bool dialogueStart = false;
     
@@ -66,10 +67,15 @@ public class PlayerMovement : MonoBehaviour
 
     public void Dialogue(InputAction.CallbackContext context)
     {
-        
         if(context.started)
         {
-            FindObjectOfType<DialogueManager>().DisplayNextSentence();  
+            if(canTalk && dialogueManager.sentences.Count == 3){
+                Debug.Log("comecou");
+                dialogueManager.StartDialogue(dialogue);
+            }else{
+                Debug.Log("next");
+                dialogueManager.DisplayNextSentence();  
+            }
         }
     }
 
@@ -88,16 +94,16 @@ public class PlayerMovement : MonoBehaviour
     public void OnTriggerEnter(Collider other)
     {
         if (other.CompareTag("Genio")){
-         FindObjectOfType<DialogueManager>().StartDialogue(dialogue);
-         canTalk = true;
+            canTalk = true;
         }
     }
 
     public void OnTriggerExit(Collider other)
     {
         if (other.CompareTag("Genio")){
-         canTalk = false;
-         FindObjectOfType<DialogueManager>().EndDialogue();
+            canTalk = false;
+            dialogueManager.sentences.Clear();
+            dialogueManager.EndDialogue();
         }
     }
 }

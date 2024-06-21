@@ -13,5 +13,5 @@ MonoBehaviour:
   m_Name: Chave 2
   m_EditorClassIdentifier: 
   itemName: Segunda chave
-  description: 
+  description: segunda chave da saida
   image: {fileID: 21300000, guid: 6c73d711de1eb5b479716c078b3a6d03, type: 3}

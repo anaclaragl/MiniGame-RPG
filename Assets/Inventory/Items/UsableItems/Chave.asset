@@ -12,6 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 57f8d94a68484f145bf6db78e477979b, type: 3}
   m_Name: Chave
   m_EditorClassIdentifier: 
-  itemName: Chave
-  description: 
+  itemName: Primeira Chave
+  description: 1 das chaves da saida
   image: {fileID: 21300000, guid: 60a5ef7fdf354bf4294e340039027c0c, type: 3}
