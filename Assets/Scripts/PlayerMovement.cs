@@ -9,48 +9,57 @@ public class PlayerMovement : MonoBehaviour
     public float currentVelocity;
     public float gravity = -9.81f;
     public float gravityMutiplier = 3.0f;
+    public float jumpForce;
     public float velocity;
     public Vector2 input;
     public Vector3 movement;
     public Transform mCamera;
     PlayerInput playerInput;
     CharacterController characterController;
+    private Cinemachine.CinemachineVirtualCamera virtualCamera;
 
-    // public bool canTalk = false;
-    // public bool canGate = false;
-    // public Dialogue dialogue;
-    // public DialogueManager dialogueManager;
-
-    // public Gate gate;
-
-    // public bool dialogueStart = false;
-    
     void Awake()
     {
         playerInput = new PlayerInput();
         playerInput.PlayerControls.Mov.performed += Move;
         playerInput.PlayerControls.Mov.canceled += Move;
-        //playerInput.PlayerControls.Dialogue.started += Dialogue;
+        playerInput.PlayerControls.Jump.started += Jump;
         characterController = GetComponent<CharacterController>();
         Cursor.visible = false;
         mCamera = Camera.main.transform;
+        virtualCamera = FindObjectOfType<Cinemachine.CinemachineVirtualCamera>();
+        if (virtualCamera != null)
+        {
+            virtualCamera.Follow = transform;
+            virtualCamera.LookAt = transform;
+        }
     }
 
     void Update()
     {
         Gravity();
         Movement();
-        transform.eulerAngles = new Vector3(transform.eulerAngles.x, mCamera.eulerAngles.y, transform.eulerAngles.z);
+        RotateToCamera();
     }
 
     private void Movement()
     {
-        characterController.Move(movement * speed * Time.deltaTime);
+        Vector3 forward = mCamera.forward;
+        Vector3 right = mCamera.right;
+        
+        forward.y = 0f;
+        right.y = 0f;
+        
+        forward.Normalize();
+        right.Normalize();
+
+        Vector3 desiredMoveDirection = (forward * input.y + right * input.x).normalized;
+        characterController.Move(desiredMoveDirection * speed * Time.deltaTime + new Vector3(0, velocity, 0) * Time.deltaTime);
     }
 
     private void Gravity()
     {
-        if(characterController.isGrounded && velocity < 0.0f)
+        if (characterController.isGrounded && velocity < 0.0f)
         {
             velocity = -1.0f;
         }
@@ -58,69 +67,37 @@ public class PlayerMovement : MonoBehaviour
         {
             velocity += gravity * gravityMutiplier * Time.deltaTime;
         }
-            movement.y = velocity;
-    } 
-
-    public void Move(InputAction.CallbackContext context)
-    {
-        input = context.ReadValue<Vector2>();
-        movement = new Vector3(input.x, 0f, input.y);
-        movement = transform.TransformDirection(movement);
     }
 
-    /*public void Dialogue(InputAction.CallbackContext context)
+    private void Move(InputAction.CallbackContext context)
     {
-        if(canTalk){
-            if(context.started){
-                if(dialogueManager.sentences.Count == 3){
-                    dialogueManager.StartDialogue(dialogue);
-                }else{
-                    dialogueManager.DisplayNextSentence();  
-                }
-            }
+        input = context.ReadValue<Vector2>();
+    }
+
+    private void Jump(InputAction.CallbackContext context)
+    {
+        if (!context.started) return;
+        if (characterController.isGrounded)
+        {
+            velocity = jumpForce;
         }
-        if(canGate){
-            if(context.started){
-                if (InventoryManager.instance.HasRequiredKeys(key1, key2)){
-                    gate.OpenDoor();
-                }else{
-                    gate.ShowLockedMessage();
-                }
-            }
-        }
-    }*/
+    }
+
+    private void RotateToCamera()
+    {
+        Vector3 forward = mCamera.forward;
+        forward.y = 0f;
+        forward.Normalize();
+        transform.forward = forward;
+    }
 
     void OnEnable()
     {
         playerInput.PlayerControls.Enable();
-   
     }
 
     void OnDisable()
     {
         playerInput.PlayerControls.Disable();
-
     }
-
-    /*public void OnTriggerEnter(Collider other)
-    {
-        if (other.CompareTag("Genio")){
-            canTalk = true;
-        }
-        if (other.CompareTag("Portao")){
-            canGate = true;
-        }
-    }
-
-    public void OnTriggerExit(Collider other)
-    {
-        if (other.CompareTag("Genio")){
-            canTalk = false;
-            dialogueManager.sentences.Clear();
-            dialogueManager.EndDialogue();
-        }
-        if (other.CompareTag("Portao")){
-            canGate = false;
-        }
-    }*/
 }

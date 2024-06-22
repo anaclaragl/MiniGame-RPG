@@ -2331,8 +2331,8 @@ MonoBehaviour:
   m_StreamingVersion: 20170927
   m_Priority: 10
   m_StandbyUpdate: 2
-  m_LookAt: {fileID: 0}
-  m_Follow: {fileID: 1646438257}
+  m_LookAt: {fileID: 1394144903}
+  m_Follow: {fileID: 1394144903}
   m_Lens:
     FieldOfView: 40
     OrthographicSize: 10
@@ -2361,7 +2361,7 @@ Transform:
   m_GameObject: {fileID: 1358282864}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 11.05, y: 1.6, z: 9.72}
+  m_LocalPosition: {x: 11.05, y: 1.11, z: 9.72}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -2386,7 +2386,7 @@ GameObject:
   - component: {fileID: 1394144911}
   - component: {fileID: 1394144910}
   m_Layer: 0
-  m_Name: Player (1)
+  m_Name: Player
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2424,6 +2424,7 @@ MonoBehaviour:
   currentVelocity: 0
   gravity: -9.81
   gravityMutiplier: 3
+  jumpForce: 10
   velocity: 0
   input: {x: 0, y: 0}
   movement: {x: 0, y: 0, z: 0}
@@ -3526,7 +3527,7 @@ Transform:
   m_GameObject: {fileID: 1924687476}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 11.05, y: 1.6, z: 9.72}
+  m_LocalPosition: {x: 11.05, y: 1.11, z: 9.72}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -4136,6 +4137,8 @@ CanvasRenderer:
 SceneRoots:
   m_ObjectHideFlags: 0
   m_Roots:
+  - {fileID: 1924687481}
+  - {fileID: 1358282866}
   - {fileID: 74108187}
   - {fileID: 1769791991}
   - {fileID: 215457048}
@@ -4148,6 +4151,4 @@ SceneRoots:
   - {fileID: 447164682}
   - {fileID: 831629957}
   - {fileID: 1394144903}
-  - {fileID: 1358282866}
-  - {fileID: 1924687481}
   - {fileID: 1283169012}
