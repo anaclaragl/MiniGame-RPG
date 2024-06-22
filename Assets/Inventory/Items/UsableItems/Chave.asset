@@ -14,4 +14,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   itemName: Primeira Chave
   description: 1 das chaves da saida
-  image: {fileID: 21300000, guid: 60a5ef7fdf354bf4294e340039027c0c, type: 3}
+  image: {fileID: 21300000, guid: 6c73d711de1eb5b479716c078b3a6d03, type: 3}

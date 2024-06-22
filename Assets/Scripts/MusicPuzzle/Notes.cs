@@ -4,7 +4,8 @@ using UnityEngine;
 
 public class Notes : MonoBehaviour
 {
-    //som
+    public AudioClip noteSound;
+    private AudioSource audioSource;
     public Material playMaterial;
     public Material originalMaterial;
     private Renderer renderer;
@@ -12,9 +13,12 @@ public class Notes : MonoBehaviour
     void Start(){
         renderer = GetComponent<Renderer>();
         originalMaterial = renderer.material;
+        audioSource = gameObject.AddComponent<AudioSource>();
+        audioSource.clip = noteSound;
     }
 
     public void PlayNote(){
+        audioSource.Play();
         StartCoroutine("ActiveNote");
     }
 
