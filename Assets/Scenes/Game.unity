@@ -3544,7 +3544,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3d21d855868208744bec7b6dce876a35, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  item: {fileID: 11400000, guid: 290e0d1a4c48a2941aeaff7fa26a0b47, type: 2}
+  item: {fileID: 11400000, guid: 0d5079a7abc43804788a038bc1405272, type: 2}
   buttonCanva: {fileID: 0}
 --- !u!65 &1906362343
 BoxCollider:
