@@ -5,8 +5,9 @@ using UnityEngine;
 
 public class Button : MonoBehaviour
 {
-   public void OnPlay()
+   public string Scene;
+   public void OnClickButton()
    {
-        SceneManager.LoadScene("Game");
+        SceneManager.LoadScene("Scene");
    }
 }
