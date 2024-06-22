@@ -53,6 +53,51 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": true
+                },
+                {
+                    ""name"": ""Re"",
+                    ""type"": ""Value"",
+                    ""id"": ""fdbd8124-91a5-4262-a217-39ef9fdb157d"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": true
+                },
+                {
+                    ""name"": ""La"",
+                    ""type"": ""Value"",
+                    ""id"": ""809a911d-ca9d-4227-a2a3-5acdf8b8a579"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": true
+                },
+                {
+                    ""name"": ""Sol"",
+                    ""type"": ""Value"",
+                    ""id"": ""7f00e2eb-946b-42aa-8dc0-19a9e21c7c98"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": true
+                },
+                {
+                    ""name"": ""Mi"",
+                    ""type"": ""Value"",
+                    ""id"": ""428c6f1c-b006-4d85-adaa-e7c5a70df978"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": true
+                },
+                {
+                    ""name"": ""Repeat"",
+                    ""type"": ""Value"",
+                    ""id"": ""ae93002d-25c7-4100-8f73-ba695d138ff6"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": true
                 }
             ],
             ""bindings"": [
@@ -132,6 +177,61 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
                     ""action"": ""Dialogue"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""5ce6e7a2-2ce8-4d4b-b361-5f3d342da488"",
+                    ""path"": ""<Keyboard>/2"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""La"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""a25f3129-cc66-4435-965a-8e16a268db83"",
+                    ""path"": ""<Keyboard>/1"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Re"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""815f778f-d73f-40fc-8f6b-5477411cb0a7"",
+                    ""path"": ""<Keyboard>/3"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Sol"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""b005f85b-4027-4b23-ba4e-bc161e8e5a98"",
+                    ""path"": ""<Keyboard>/4"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Mi"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""d88c9b15-9bda-4b3c-8ad1-1867bb8608ce"",
+                    ""path"": ""<Keyboard>/r"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Repeat"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -143,6 +243,11 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
         m_PlayerControls_Mov = m_PlayerControls.FindAction("Mov", throwIfNotFound: true);
         m_PlayerControls_Dash = m_PlayerControls.FindAction("Dash", throwIfNotFound: true);
         m_PlayerControls_Dialogue = m_PlayerControls.FindAction("Dialogue", throwIfNotFound: true);
+        m_PlayerControls_Re = m_PlayerControls.FindAction("Re", throwIfNotFound: true);
+        m_PlayerControls_La = m_PlayerControls.FindAction("La", throwIfNotFound: true);
+        m_PlayerControls_Sol = m_PlayerControls.FindAction("Sol", throwIfNotFound: true);
+        m_PlayerControls_Mi = m_PlayerControls.FindAction("Mi", throwIfNotFound: true);
+        m_PlayerControls_Repeat = m_PlayerControls.FindAction("Repeat", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -207,6 +312,11 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
     private readonly InputAction m_PlayerControls_Mov;
     private readonly InputAction m_PlayerControls_Dash;
     private readonly InputAction m_PlayerControls_Dialogue;
+    private readonly InputAction m_PlayerControls_Re;
+    private readonly InputAction m_PlayerControls_La;
+    private readonly InputAction m_PlayerControls_Sol;
+    private readonly InputAction m_PlayerControls_Mi;
+    private readonly InputAction m_PlayerControls_Repeat;
     public struct PlayerControlsActions
     {
         private @PlayerInput m_Wrapper;
@@ -214,6 +324,11 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
         public InputAction @Mov => m_Wrapper.m_PlayerControls_Mov;
         public InputAction @Dash => m_Wrapper.m_PlayerControls_Dash;
         public InputAction @Dialogue => m_Wrapper.m_PlayerControls_Dialogue;
+        public InputAction @Re => m_Wrapper.m_PlayerControls_Re;
+        public InputAction @La => m_Wrapper.m_PlayerControls_La;
+        public InputAction @Sol => m_Wrapper.m_PlayerControls_Sol;
+        public InputAction @Mi => m_Wrapper.m_PlayerControls_Mi;
+        public InputAction @Repeat => m_Wrapper.m_PlayerControls_Repeat;
         public InputActionMap Get() { return m_Wrapper.m_PlayerControls; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -232,6 +347,21 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
             @Dialogue.started += instance.OnDialogue;
             @Dialogue.performed += instance.OnDialogue;
             @Dialogue.canceled += instance.OnDialogue;
+            @Re.started += instance.OnRe;
+            @Re.performed += instance.OnRe;
+            @Re.canceled += instance.OnRe;
+            @La.started += instance.OnLa;
+            @La.performed += instance.OnLa;
+            @La.canceled += instance.OnLa;
+            @Sol.started += instance.OnSol;
+            @Sol.performed += instance.OnSol;
+            @Sol.canceled += instance.OnSol;
+            @Mi.started += instance.OnMi;
+            @Mi.performed += instance.OnMi;
+            @Mi.canceled += instance.OnMi;
+            @Repeat.started += instance.OnRepeat;
+            @Repeat.performed += instance.OnRepeat;
+            @Repeat.canceled += instance.OnRepeat;
         }
 
         private void UnregisterCallbacks(IPlayerControlsActions instance)
@@ -245,6 +375,21 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
             @Dialogue.started -= instance.OnDialogue;
             @Dialogue.performed -= instance.OnDialogue;
             @Dialogue.canceled -= instance.OnDialogue;
+            @Re.started -= instance.OnRe;
+            @Re.performed -= instance.OnRe;
+            @Re.canceled -= instance.OnRe;
+            @La.started -= instance.OnLa;
+            @La.performed -= instance.OnLa;
+            @La.canceled -= instance.OnLa;
+            @Sol.started -= instance.OnSol;
+            @Sol.performed -= instance.OnSol;
+            @Sol.canceled -= instance.OnSol;
+            @Mi.started -= instance.OnMi;
+            @Mi.performed -= instance.OnMi;
+            @Mi.canceled -= instance.OnMi;
+            @Repeat.started -= instance.OnRepeat;
+            @Repeat.performed -= instance.OnRepeat;
+            @Repeat.canceled -= instance.OnRepeat;
         }
 
         public void RemoveCallbacks(IPlayerControlsActions instance)
@@ -267,5 +412,10 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
         void OnMov(InputAction.CallbackContext context);
         void OnDash(InputAction.CallbackContext context);
         void OnDialogue(InputAction.CallbackContext context);
+        void OnRe(InputAction.CallbackContext context);
+        void OnLa(InputAction.CallbackContext context);
+        void OnSol(InputAction.CallbackContext context);
+        void OnMi(InputAction.CallbackContext context);
+        void OnRepeat(InputAction.CallbackContext context);
     }
 }

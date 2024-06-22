@@ -13,8 +13,10 @@ public class PlayerController : MonoBehaviour
 
     public bool canTalk = false;
     public bool canGate = false;
+    public bool canMusic = false;
 
-    public Dialogue dialogue;
+    public Notes _re, _la, _sol, _mi;
+
     public DialogueManager dialogueManager;
 
     public Gate gate;
@@ -25,12 +27,12 @@ public class PlayerController : MonoBehaviour
     void Awake(){
         playerInput = new PlayerInput();
         playerInput.PlayerControls.Dialogue.started += Dialogue;
-    }
 
-    void Update(){
-        if(Input.GetMouseButtonDown(0)){
-            InteractWithNote();
-        }
+        playerInput.PlayerControls.Re.started += Re;
+        playerInput.PlayerControls.La.started += La;
+        playerInput.PlayerControls.Sol.started += Sol;
+        playerInput.PlayerControls.Mi.started += Mi;
+        playerInput.PlayerControls.Repeat.started += RepeatMusicSequence;
     }
 
     public void Dialogue(InputAction.CallbackContext context)
@@ -38,7 +40,7 @@ public class PlayerController : MonoBehaviour
         if(canTalk){
             if(context.started){
                 if(dialogueManager.sentences.Count == 3){
-                    dialogueManager.StartDialogue(dialogue);
+                    dialogueManager.StartDialogue();
                 }else{
                     dialogueManager.DisplayNextSentence();  
                 }
@@ -75,6 +77,9 @@ public class PlayerController : MonoBehaviour
         if (other.CompareTag("Portao")){
             canGate = true;
         }
+        if (other.CompareTag("Music")){
+            canMusic = true;
+        }
     }
 
     public void OnTriggerExit(Collider other)
@@ -87,9 +92,62 @@ public class PlayerController : MonoBehaviour
         if (other.CompareTag("Portao")){
             canGate = false;
         }
+        if (other.CompareTag("Music")){
+            canMusic = false;
+        }
     }
 
-    void InteractWithNote(){
+    public void Re(InputAction.CallbackContext context){
+        if(canMusic){
+            if(context.started){
+                Notes note = _re.GetComponent<Notes>();
+                note.PlayNote();
+                playerSequence.Add(note);
+                CheckPlayerSequence();
+            }
+        }
+    }
+
+    public void La(InputAction.CallbackContext context){
+        if(canMusic){
+            if(context.started){
+                Notes note = _la.GetComponent<Notes>();
+                note.PlayNote();
+                playerSequence.Add(note);
+                CheckPlayerSequence();
+            }
+        }
+    }
+
+    public void Sol(InputAction.CallbackContext context){
+        if(canMusic){
+            if(context.started){
+                Notes note = _sol.GetComponent<Notes>();
+                note.PlayNote();
+                playerSequence.Add(note);
+                CheckPlayerSequence();
+            }
+        }
+    }
+
+    public void Mi(InputAction.CallbackContext context){
+        if(canMusic){
+            if(context.started){
+                Notes note = _mi.GetComponent<Notes>();
+                note.PlayNote();
+                playerSequence.Add(note);
+                CheckPlayerSequence();
+            }
+        }
+    }
+
+    public void RepeatMusicSequence(InputAction.CallbackContext context){
+        if(context.started){
+            musicPuzzle.RepeatSequence();
+        }
+    }
+
+    /*void InteractWithNote(){
         RaycastHit hit;
         Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
 
@@ -107,7 +165,7 @@ public class PlayerController : MonoBehaviour
         if (hit.collider.gameObject == musicPuzzle.repeatButton){
             musicPuzzle.RepeatSequence();
         }
-    }
+    }*/
 
     public void SetSystemSequence(List<Notes> sequence){
         systemSequence = sequence;

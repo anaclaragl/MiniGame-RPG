@@ -26,12 +26,12 @@ public class DialogueManager : MonoBehaviour
         }
     }
 
-    public void StartDialogue (Dialogue dialogue)
+    public void StartDialogue()
     {
 
         animator.SetBool("IsOpen", true);
 
-        nameText.text = dialogue.name;
+        nameText.text = _dialogue.name;
 
         //sentences.Clear();
 
